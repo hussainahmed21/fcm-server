@@ -21,7 +21,7 @@ app.get("/sendNotification", async (req, res) => {
     const { topic, title, body, imageUrl } = req.query;
 
     // ----> এই লাইনটি ঠিক করা হয়েছে <----
-    if (!topic  !title  !body) {
+    if (!topic || !title || !body) {
         return res.status(400).send("Error: 'topic', 'title', and 'body' are required parameters.");
     }
 

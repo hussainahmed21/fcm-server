@@ -1,7 +1,7 @@
 const express = require("express");
 const admin = require("firebase-admin");
 
-// এই কোডটি পরিবেশ ভেরিয়েবল (Environment Variable) থেকে আপনার গোপন কী পড়বে
+// পরিবেশ ভেরিয়েবল থেকে আপনার গোপন কী পড়া হচ্ছে
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
 
 admin.initializeApp({
@@ -11,16 +11,15 @@ admin.initializeApp({
 const app = express();
 const port = process.env.PORT || 3000;
 
-// ওয়েলকাম মেসেজ দেখানোর জন্য
+// ওয়েলকাম মেসেজ
 app.get("/", (req, res) => {
     res.status(200).send("FCM Server is running!");
 });
 
-// নোটিফিকেশন পাঠানোর জন্য মূল URL
+// নোটিফিকেশন পাঠানোর URL
 app.get("/sendNotification", async (req, res) => {
     const { topic, title, body, imageUrl } = req.query;
 
-    // ----> এই লাইনটি ঠিক করা হয়েছে <----
     if (!topic || !title || !body) {
         return res.status(400).send("Error: 'topic', 'title', and 'body' are required parameters.");
     }
@@ -44,5 +43,6 @@ app.get("/sendNotification", async (req, res) => {
 });
 
 app.listen(port, () => {
+  // ----> এই লাইনটি ঠিক করা হয়েছে <----
   console.log(Server listening on port ${port});
 });

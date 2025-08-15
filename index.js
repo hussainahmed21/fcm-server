@@ -44,5 +44,5 @@ app.get("/sendNotification", async (req, res) => {
 
 app.listen(port, () => {
   // ----> এই লাইনটি ঠিক করা হয়েছে <----
-  console.log(Server listening on port ${port});
+  console.log(`Server listening on port ${port}`);
 });

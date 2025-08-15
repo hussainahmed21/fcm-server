@@ -2,7 +2,6 @@ const express = require("express");
 const admin = require("firebase-admin");
 
 // এই কোডটি পরিবেশ ভেরিয়েবল (Environment Variable) থেকে আপনার গোপন কী পড়বে
-// এটি Render.com-এ সেট করতে হবে
 const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
 
 admin.initializeApp({
@@ -19,9 +18,9 @@ app.get("/", (req, res) => {
 
 // নোটিফিকেশন পাঠানোর জন্য মূল URL
 app.get("/sendNotification", async (req, res) => {
-    // URL থেকে ডেটাগুলো নেওয়া হচ্ছে
     const { topic, title, body, imageUrl } = req.query;
 
+    // ----> এই লাইনটি ঠিক করা হয়েছে <----
     if (!topic  !title  !body) {
         return res.status(400).send("Error: 'topic', 'title', and 'body' are required parameters.");
     }

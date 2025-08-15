@@ -1,0 +1,13 @@
+{
+  "name": "fcm-sender",
+  "version": "1.0.0",
+  "description": "FCM Notification Sender Server for Render",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "firebase-admin": "^12.1.0"
+  }
+}
